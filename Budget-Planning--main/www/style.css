@@ -1,0 +1,313 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #2d405545;
+  color: white;
+  margin: 0;
+  padding: 0;
+  display: flex; /* Use flexbox for body */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  justify-content: center; /* Center children vertically */
+  min-height: 50vh; /* Ensure body takes full viewport height */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Login Section Styling */
+.login-container {
+  width: 95vw; /* Use viewport width for better mobile fit */
+  max-width: 400px;
+  background:linear-gradient(to right, #603813, #b29f94);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.);
+  margin-top: 50px;
+  margin-left: auto; /* Center horizontally */
+  margin-right: auto; /* Center horizontally */
+}
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem; /* Adjusted for mobile */
+}
+
+/* Main Content Container */
+#main-content {
+  width: 95vw; /* Use viewport width for better mobile fit */
+  max-width: 600px;
+  background: linear-gradient(to right, #757f9a, #d7dde8);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Center horizontally */
+}
+
+header h1 {
+  
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1rem;
+  text-align: center;
+  color: #333;
+  margin: 15px 0;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.7rem; /* Adjusted for mobile */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Added gap for better spacing */
+}
+
+input, select, button {
+  margin: 0; /* Remove individual margins to use gap from form */
+  padding: 12px; /* Slightly larger padding for touch targets */
+  font-size: 1rem;
+  border-radius: 8px; /* Slightly larger border-radius */
+  border: 1px solid #ddd;
+}
+
+button {
+  background: deepskyblue;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #00bfff;
+
+}
+
+/* Filter Section - General Styling */
+.filter-section {
+  display: flex; /* Use flexbox */
+  flex-wrap: wrap; /* Allow items to wrap if space is tight */
+  justify-content: space-between; /* Distribute items with space between */
+  align-items: center; /* Vertically align items */
+  gap: 10px; /* Gap between items */
+  margin-bottom: 20px;
+}
+
+.filter-section label {
+  /* Keep labels visible on larger screens but make them small */
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.filter-section select {
+  flex-grow: 1; /* Allow selects to grow and fill space */
+  max-width: 120px; /* Limit max width of selects */
+  padding: 8px; /* Smaller padding for selects */
+  font-size: 0.9rem; /* Smaller font for selects */
+}
+
+/* Summary Section */
+.summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  padding: 15px;
+  background: linear-gradient(to right, #603813, #b29f94); 
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.summary-box {
+  flex: 1;
+  text-align: center;
+  padding: 10px 5px;
+}
+.summary-box h3 {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+.summary-box p {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 10px 5px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+table th {
+  background:linear-gradient(to right, #603813, #b29f94);
+  color: white;
+}
+
+.delete-btn, .edit-btn {
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  margin: 0 3px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.delete-btn {
+  background: red;
+}
+.delete-btn:hover {
+  background: darkred;
+}
+
+.edit-btn {
+  background: #4CAF50;
+}
+.edit-btn:hover {
+  background: #45a049;
+}
+
+#logout-btn {
+  background: darkred;
+  margin-left: 10px; /* Keep original margin-left for logout button */
+}
+#logout-btn:hover {
+  background: #555;
+}
+
+/* Responsive Design for screens up to 600px wide */
+@media (max-width: 600px) {
+  body {
+    padding: 15px auto; /* Add some padding to the body on mobile */
+    justify-content: flex-start; /* Align content to the top on smaller screens to allow scrolling */
+  }
+
+  .login-container,
+  #main-content {
+    
+    width: 85%; /* Make containers slihtly wider for better use of space */
+    padding: 15px; /* Reduce padding slightly */
+    margin: 15px auto; /* Adjust top/bottom margin */
+  }
+
+  header h1 {
+    font-size: 1.8rem; /* Smaller header on mobile */
+    margin: 10px 0;
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Smaller section titles */
+  }
+
+  input, select, button {
+    padding: 10px; /* Slightly smaller padding for inputs/buttons */
+    font-size: 0.95rem;
+  }
+
+  /* Filter Section on Mobile - Keep original layout with flexbox adjustments */
+  .filter-section {
+    flex-wrap: wrap; /* Allow items to wrap if screen is very small */
+    justify-content: space-between; /* Space out items */
+    gap: 8px; /* Reduce gap */
+  }
+  .filter-section label {
+    display: none; /* Hide labels on mobile to save space */
+  }
+  .filter-section select {
+    flex: 1 1 auto; /* Allow selects to grow and shrink */
+    max-width: unset; /* Remove max-width on mobile */
+    min-width: 80px; /* Ensure a minimum width */
+    font-size: 0.85rem; /* Even smaller font for select options */
+  }
+  .filter-section button {
+    flex: 0 0 auto; /* Buttons don't grow or shrink */
+    width: auto; /* Buttons take natural width */
+    padding: 8px 12px; /* Touch-friendly button size */
+    font-size: 0.9rem;
+    margin-left: 0; /* Reset margin from general rules */
+  }
+  #filter-btn, #logout-btn {
+    margin-left: 0; /* Ensure no extra margin for these buttons on mobile */
+  }
+
+
+  .summary {
+    flex-direction: column; /* Stack summary boxes vertically on small screens */
+    align-items: stretch; /* Stretch boxes to fill width */
+    gap: 8px; /* Reduce gap */
+    padding: 10px;
+  }
+  .summary-box {
+    padding: 8px; /* Smaller padding for stacked boxes */
+  }
+  .summary-box h3 {
+    font-size: 0.8rem;
+  }
+  .summary-box p {
+    font-size: 1rem;
+  }
+
+  table {
+    min-width: 320px; /* Ensure table is wide enough to prevent content collapse */
+    display: block; /* Allows horizontal scrolling of table */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Keep table cells in one line */
+  }
+
+  table th, table td {
+    padding: 8px 4px; /* Further reduce padding */
+    font-size: 0.8rem; /* Smaller table text */
+  }
+
+  .delete-btn, .edit-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Added for smaller than 320px screens */
+@media (max-width: 320px) {
+  .login-container,
+  #main-content {
+    width: 98%; /* Even tighter fit */
+    padding: 10px;
+    margin: 10px auto;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  input, select, button {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  .filter-section select {
+    min-width: 60px; /* Even smaller min-width for selects */
+  }
+  .summary {
+    padding: 8px;
+  }
+  .summary-box h3 {
+    font-size: 0.7rem;
+  }
+  .summary-box p {
+    font-size: 0.9rem;
+  }
+  table th, table td {
+    padding: 6px 3px;
+    font-size: 0.75rem;
+  }
+  .delete-btn, .edit-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}

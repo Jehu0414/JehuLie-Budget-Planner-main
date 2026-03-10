@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   background: #2d405545;
-  color: white;
+  color: black;
   margin: 0;
   padding: 0;
   display: flex; /* Use flexbox for body */
@@ -16,7 +16,7 @@ body {
 .login-container {
   width: 95vw; /* Use viewport width for better mobile fit */
   max-width: 400px;
-  background:linear-gradient(to right, #603813, #b29f94);
+  background:linear-gradient(to right, #8bdeda, #43add0, #998ee0);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.);
@@ -34,7 +34,7 @@ body {
 #main-content {
   width: 95vw; /* Use viewport width for better mobile fit */
   max-width: 600px;
-  background: linear-gradient(to right, #757f9a, #d7dde8);
+  background: linear-gradient(to right,  #d7dde8);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -112,7 +112,7 @@ button:hover {
   justify-content: space-between;
   gap: 5px;
   padding: 15px;
-  background: linear-gradient(to right, #603813, #b29f94); 
+  background: linear-gradient(to right, #8bdeda, #43add0,#998ee0 ); 
   color: white;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -145,7 +145,7 @@ table th, table td {
 }
 
 table th {
-  background:linear-gradient(to right, #603813, #b29f94);
+  background:linear-gradient(to right, #8bdeda, #43add0,#998ee0);
   color: white;
 }
 

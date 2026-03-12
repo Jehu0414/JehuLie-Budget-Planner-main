@@ -1,100 +1,248 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JehuLie Budget Planner</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>JehuLie Budget Planner</h1>
-  </header>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>JehuLie Budget Planner</title>
+      <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+      <!-- Sidebar Button -->
+<button id="sidebar-btn">☰</button>
 
-  <!-- Admin Login Section -->
-  <section id="login-section" class="login-container">
-    <h2>Admin Login</h2>
-    <form id="login-form">
-      <label for="admin-username">Username</label>
-      <input type="text" id="admin-username" required placeholder="Enter username" />
+<!-- Sidebar Menu -->
+<div id="sidebar-menu">
 
-      <label for="admin-password">Password</label>
-      <input type="password" id="admin-password" required placeholder="Enter password" />
+  <h2>Julie Budget Planner</h2>
 
-      <button type="submit">Login</button>
-    </form>
-  </section>
+  <button onclick="openSidebarPage('about')">About Julie Budget Planner</button>
+  <button onclick="openSidebarPage('terms')">Terms of Service</button>
+  <button onclick="openSidebarPage('privacy')">Privacy Policy</button>
+  <button onclick="openSidebarPage('community')">Community Guidelines</button>
+  <button onclick="openSidebarPage('vulnerability')">Report Vulnerability</button>
+  <button onclick="openSidebarPage('help')">Help & Feedback</button>
 
-  <!-- Protected Main Content (Hidden by default) -->
-  <main id="main-content" style="display: none;">
-    <!-- Month & Year Filter -->
-    <section class="filter-section">
-      <label for="month">Month:</label>
-      <select id="month"></select>
+</div>
 
-      <label for="year">Year:</label>
-      <select id="year"></select>
+<!-- Sidebar Pages -->
+<div id="sidebar-content">
 
-      <button id="filter-btn">Filter</button>
-      <button id="logout-btn">Logout</button> <!-- Logout button -->
-    </section>
+<div id="about" class="sidebar-page">
+<h2>About Julie Budget Planner</h2>
+<p>
+Jehulie Budget Planner is a user-friendly personal finance tool designed to help individuals take control of their money with ease. At its core, the app lets users track all sources of income, log every expense, and automatically calculate the net balance—giving a clear, real-time snapshot of financial health, as seen in the dashboard where total amounts are displayed prominently.
+ <br><br/>
+ Features include:
+  <br><br/>
+• A streamlined interface for quickly adding transactions, with fields for description, amount, and type (Income/Expense).
+​ <br><br/>
+• Instant confirmation when transactions are successfully recorded, along with dynamic updates to the main financial summary.
+​ <br><br/>
+• Options to filter data by month and year, enabling users to review spending and earning patterns over specific periods.
+​ <br><br/>
+• A dedicated transactions section to view, manage, and reference all financial entries, with easy access via the "View All" button.
+  <br><br/>
+Built for simplicity and efficiency, the app eliminates complexity so users can focus on budgeting basics—planning wisely, staying on top of cash flow, and working toward their financial goals without hassle..
+</p>
+</div>
 
-    <!-- Budget Summary -->
-    <section class="summary">
-      <div class="summary-box">
-        <h3>Total Income</h3>
-        <p id="total-income">₱0.00</p>
-      </div>
-      <div class="summary-box">
-        <h3>Total Expenses</h3>
-        <p id="total-expense">₱0.00</p>
-      </div>
-      <div class="summary-box">
-        <h3>Net Balance</h3>
-        <p id="net-balance">₱0.00</p>
-      </div>
-    </section>
+<div id="terms" class="sidebar-page">
+<h2>Terms of Service</h2>
+<p><b>Effective: Feb 28th, 2026</b></p>
 
-    <!-- Transaction Form -->
-    <section class="transaction-form">
-      <form id="transaction-form">
-        <label for="description">Description</label>
-        <input type="text" id="description" required placeholder="e.g., Salary, Groceries" />
-        <small id="desc-error" class="error-message" style="color: red; display: none;">Description cannot contain numbers!</small>
+<p>
+Welcome to Julie Budget Planner.
+</p>
 
-        <label for="amount">Amount</label>
-        <input type="number" id="amount" required placeholder="Enter amount" step="0.01" />
+<p>
+Terms of Service for Jehulie Budget Planner
+ <br><br/> 
+1. Acceptance of Terms
+This service is provided to help users manage and track personal finances, including income, expenses, and net balance. By accessing or using the Jehulie Budget Planner system, you confirm that you have read, understood, and agree to comply with these Terms of Service, as well as all applicable system rules and guidelines. If you do not agree to these terms, please do not use the service.
+  <br><br/>
+2. Scope of Service
+The app is intended for personal, non-commercial use only. We provide tools to record and organize financial data, but we do not offer financial advice, planning, or consultation. Users are solely responsible for the accuracy and completeness of all information entered into the system.
+  <br><br/>
+3. User Responsibilities
+  <br><br/>
+• You must use the service only for lawful purposes and in accordance with local, national, and international laws.
+• You are responsible for maintaining the confidentiality of any access credentials used to log into the app.
+• You agree not to modify, copy, distribute, sell, or lease any part of the service, nor to reverse-engineer or attempt to extract the source code, except as permitted by applicable law.
+  <br><br/>
+4. Data and Privacy
+Your financial data is stored to provide the service’s functionality. We take reasonable measures to protect your information from unauthorized access, but we do not guarantee absolute security. You retain ownership of all data you enter, and we will not share your personal or financial information with third parties without your consent, except as required by law.
+  <br><br/>
+5. Service Availability
+We strive to keep the app accessible at all times, but we do not guarantee uninterrupted or error-free operation. We may modify, suspend, or discontinue any part of the service at any time, with or without notice.
+  <br><br/>
+6. Disclaimer of Warranties
+THE SERVICE IS PROVIDED "AS IS" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.
+  <br><br/>
+7. Limitation of Liability
+To the maximum extent permitted by law, Jehulie Budget Planner and its developers shall not be liable for any direct, indirect, incidental, special, or consequential damages arising from the use or inability to use the service.
+  <br><br/>
+8. Changes to Terms
+We reserve the right to update these Terms of Service at any time. Changes will be posted within the app, and continued use of the service after changes are published constitutes your acceptance of the revised terms.
+ 
+</p>
 
-        <label for="type">Type</label>
-        <select id="type">
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
-        </select>
+<p>
+Julie Budget Planner is provided for budgeting and financial tracking purposes only.
+</p>
 
-        <button type="submit">Add Transaction</button>
-      </form>
-    </section>
+</div>
 
-    <!-- Transaction List -->
-    <section class="transactions">
-      <h2>Transactions <button id="view-all-btn">View All</button></h2>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Amount</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="transaction-list"></tbody>
-        </table>
-      </div>
-    </section>
-  </main>
+<div id="privacy" class="sidebar-page">
+<h2>Privacy Policy</h2>
 
-  <script src="script.js"></script>
-</body>
-</html>
+<p><b>Effective: Feb. 28th, 2026</b></p>
+
+<p>
+Julie Budget Planner respects your privacy and protects your financial records.
+</p>
+
+<p>
+Information collected includes:
+</p>
+
+<ul>
+<li>Account login information</li>
+<li>Budget transaction records</li>
+<li>Application usage data</li>
+</ul>
+
+</div>
+
+<div id="community" class="sidebar-page">
+<h2>Community Guidelines</h2>
+
+<p>
+Users must use Julie Budget Planner responsibly and ethically.
+</p>
+
+<p>
+Prohibited activities include:
+</p>
+
+<ul>
+<li>Unauthorized system access</li>
+<li>Manipulation of financial records</li>
+<li>Abuse of system features</li>
+</ul>
+
+</div>
+
+<div id="vulnerability" class="sidebar-page">
+<h2>Report Vulnerability</h2>
+
+<p>
+If you discover a vulnerability in Julie Budget Planner, report it responsibly.
+</p>
+
+<p>Email: jehutaes5@gmail.com</p>
+
+</div>
+
+<div id="help" class="sidebar-page">
+<h2>Help & Feedback</h2>
+
+<p>
+For assistance or feedback regarding Julie Budget Planner, contact the system administrator.
+</p>
+
+<p>Email: jehutaes5@gmail.com</p>
+
+</div>
+
+</div>
+      <header>
+        <h1>JehuLie Budget Planner</h1>
+      </header>
+    
+      <!-- Admin Login Section -->
+      <section id="login-section" class="login-container">
+        <h2>Admin Login</h2>
+        <form id="login-form">
+          <label for="admin-username">Username</label>
+          <input type="text" id="admin-username" required placeholder="Enter username" />
+    
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" required placeholder="Enter password" />
+    
+          <button type="submit">Login</button>
+        </form>
+      </section>
+    
+      <!-- Protected Main Content (Hidden by default) -->
+      <main id="main-content" style="display: none;">
+        <!-- Month & Year Filter -->
+        <section class="filter-section">
+          <label for="month">Month:</label>
+          <select id="month"></select>
+    
+          <label for="year">Year:</label>
+          <select id="year"></select>
+    
+          <button id="filter-btn">Filter</button>
+          <button id="logout-btn">Logout</button> <!-- Logout button -->
+        </section>
+    
+        <!-- Budget Summary -->
+        <section class="summary">
+          <div class="summary-box">
+            <h3>Total Income</h3>
+            <p id="total-income">₱0.00</p>
+          </div>
+          <div class="summary-box">
+            <h3>Total Expenses</h3>
+            <p id="total-expense">₱0.00</p>
+          </div>
+          <div class="summary-box">
+            <h3>Net Balance</h3>
+            <p id="net-balance">₱0.00</p>
+          </div>
+        </section>
+    
+        <!-- Transaction Form -->
+        <section class="transaction-form">
+          <form id="transaction-form">
+            <label for="description">Description</label>
+            <input type="text" id="description" required placeholder="e.g., Salary, Groceries" />
+            <small id="desc-error" class="error-message" style="color: red; display: none;">Description cannot contain numbers!</small>
+    
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" required placeholder="Enter amount" step="0.01" />
+    
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="income">Income</option>
+              <option value="expense">Expense</option>
+            </select>
+    
+            <button type="submit">Add Transaction</button>
+          </form>
+        </section>
+    
+        <!-- Transaction List -->
+        <section class="transactions">
+          <h2>Transactions <button id="view-all-btn">View All</button></h2>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Description</th>
+                  <th>Type</th>
+                  <th>Amount</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="transaction-list"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    
+      <script src="script.js"></script>
+    </body>
+    </html>

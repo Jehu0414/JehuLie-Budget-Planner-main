@@ -1,7 +1,55 @@
 let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
 let currentEditDate = null;
-// Default admin credentials (can be customized)
 const ADMIN_CREDENTIALS = { username: "admin", password: "admin123" };
+
+// --------------------------
+// Sidebar Logic (Hidden Before Login)
+// --------------------------
+const sidebarBtn = document.getElementById("sidebar-btn");
+const sidebarMenu = document.getElementById("sidebar-menu");
+const sidebarContent = document.getElementById("sidebar-content");
+const mainContent = document.getElementById("main-content");
+const sidebarPages = document.querySelectorAll(".sidebar-page");
+
+// INITIALLY HIDE SIDEBAR ELEMENTS
+sidebarBtn.style.display = "none";
+sidebarMenu.style.display = "none";
+sidebarContent.style.display = "none";
+
+// Toggle sidebar visibility (only works after login)
+sidebarBtn.onclick = function () {
+  if (sidebarMenu.style.left === "0px") {
+    sidebarMenu.style.left = "-260px";
+    // Show correct content when closing
+    if (sidebarContent.style.display === "block") {
+      mainContent.style.display = "none";
+    } else {
+      mainContent.style.display = "block";
+    }
+  } else {
+    sidebarMenu.style.left = "0px";
+    sidebarContent.style.display = "none";
+    mainContent.style.display = "block";
+  }
+};
+
+// Open selected sidebar page & auto-hide sidebar
+function openSidebarPage(pageId) {
+  sidebarMenu.style.left = "-260px"; // Hide menu
+  mainContent.style.display = "none";
+  sidebarContent.style.display = "block";
+
+  // Show selected page
+  sidebarPages.forEach(page => page.style.display = "none");
+  document.getElementById(pageId).style.display = "block";
+}
+
+// Return to main planner
+function showMainPlanner() {
+  sidebarContent.style.display = "none";
+  sidebarMenu.style.left = "-260px";
+  mainContent.style.display = "block";
+}
 
 // --------------------------
 // Notification System Logic
@@ -13,6 +61,74 @@ function createNotificationSystem() {
 
   const style = document.createElement('style');
   style.textContent = `
+    /* Sidebar Styling */
+    #sidebar-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      padding: 8px 16px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    #sidebar-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+      transition: left 0.3s ease;
+      z-index: 1000;
+    }
+    #sidebar-menu h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #ecf0f1;
+      padding-bottom: 10px;
+    }
+    #sidebar-menu button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: #34495e;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-align: left;
+      font-size: 16px;
+    }
+    #sidebar-menu button:hover {
+      background: #3498db;
+    }
+    #sidebar-content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      display: none;
+      z-index: 999;
+      overflow-y: auto;
+    }
+    .sidebar-page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Notification Styling */
     #notification-container {
       position: fixed;
       top: 20px;
@@ -51,7 +167,7 @@ function showNotification(message, type = 'success') {
 }
 
 // --------------------------
-// Admin Login/Logout Logic
+// Admin Login/Logout Logic (Show/Hide Sidebar)
 // --------------------------
 function handleLogin(e) {
   e.preventDefault();
@@ -61,6 +177,9 @@ function handleLogin(e) {
   if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
+    // SHOW SIDEBAR ELEMENTS AFTER LOGIN
+    sidebarBtn.style.display = "block";
+    sidebarMenu.style.display = "block";
     showNotification('Login successful! Welcome admin.');
   } else {
     showNotification('Invalid username or password!', 'error');
@@ -71,11 +190,16 @@ function handleLogout() {
   document.getElementById('login-section').style.display = 'block';
   document.getElementById('main-content').style.display = 'none';
   document.getElementById('login-form').reset();
+  // HIDE SIDEBAR ELEMENTS ON LOGOUT
+  sidebarBtn.style.display = "none";
+  sidebarMenu.style.display = "none";
+  sidebarContent.style.display = "none";
+  sidebarMenu.style.left = "-260px"; // Reset position
   showNotification('Logged out successfully.');
 }
 
 // --------------------------
-// Description Validation Logic
+// Remaining Logic (Unchanged)
 // --------------------------
 function validateDescription(description) {
   const hasNumbers = /\d/.test(description);
@@ -90,9 +214,6 @@ function validateDescription(description) {
   }
 }
 
-// --------------------------
-// Existing Budget Logic
-// --------------------------
 function populateFilters() {
   const monthSelect = document.getElementById('month');
   const yearSelect = document.getElementById('year');
@@ -157,7 +278,7 @@ function renderTransactions() {
   document.getElementById('transaction-form').reset();
   document.querySelector('#transaction-form button[type="submit"]').textContent = 'Add Transaction';
   currentEditDate = null;
-  document.getElementById('desc-error').style.display = 'none'; // Hide error on render
+  document.getElementById('desc-error').style.display = 'none';
 
   transactions.filter(tx => {
     const date = new Date(tx.date);
@@ -209,14 +330,12 @@ function editTransaction(date) {
   showNotification(`Editing: ${transaction.description} (₱${transaction.amount.toFixed(2)})`);
 }
 
-// Updated Form Submit with Validation
 document.getElementById('transaction-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const description = document.getElementById('description').value.trim();
   const amount = parseFloat(document.getElementById('amount').value);
   const type = document.getElementById('type').value;
 
-  // Validate description
   if (!validateDescription(description)) {
     showNotification('Description cannot contain numbers!', 'error');
     return;
@@ -243,7 +362,6 @@ document.getElementById('transaction-form').addEventListener('submit', function(
   this.reset();
 });
 
-// Add input listener for real-time description validation
 document.getElementById('description').addEventListener('input', function() {
   validateDescription(this.value.trim());
 });

@@ -16,7 +16,7 @@ body {
 .login-container {
   width: 95vw; /* Use viewport width for better mobile fit */
   max-width: 400px;
-  background:linear-gradient(to right, #8bdeda, #43add0, #998ee0);
+  background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.);
@@ -29,12 +29,108 @@ body {
   margin-bottom: 20px;
   font-size: 1.8rem; /* Adjusted for mobile */
 }
+/* SIDEBAR BUTTON */
+
+#sidebar-btn{
+position:fixed;
+top:1px;
+left:5px;
+font-size:22px;
+background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
+color:white;
+border:none;
+padding:8px 8px;
+border-radius:6px;
+cursor:pointer;
+z-index:1000;
+}
+
+
+/* SIDEBAR MENU */
+
+#sidebar-menu{
+position:fixed;
+top:0;
+left:-260px;
+width:100px;
+height:100%;
+background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
+color:white;
+padding:20px;
+transition:0.3s;
+z-index:999;
+}
+
+#sidebar-menu h2{
+margin-bottom:20px;
+}
+
+#sidebar-menu button{
+width:100%;
+margin:8px 0;
+padding:10px;
+border:none;
+background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#sidebar-menu button:hover{
+background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
+}
+
+
+/* SIDEBAR CONTENT */
+
+#sidebar-content{
+position:fixed;
+right:0;
+top:0;
+width:100%;
+height:100%;
+background:white;
+overflow:auto;
+padding:30px;
+display:none;
+z-index:998;
+}
+
+.sidebar-page{
+display:none;
+}
+/* Sidebar pages container */
+
+#sidebar-content{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:white;
+overflow-y:auto;
+padding:25px;
+display:none;
+z-index:900;
+}
+
+/* Sidebar page text styling */
+
+.sidebar-page h2{
+margin-top:60px;
+font-size:24px;
+}
+
+.sidebar-page p{
+line-height:1.6;
+margin-top:10px;
+}
 
 /* Main Content Container */
 #main-content {
   width: 95vw; /* Use viewport width for better mobile fit */
   max-width: 600px;
-  background: linear-gradient(to right,  #d7dde8);
+  background: linear-gradient(to right,  white);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -44,7 +140,7 @@ body {
 header h1 {
   
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1rem;
+  font-size: 0.5rem;
   text-align: center;
   color: #333;
   margin: 15px 0;
@@ -112,8 +208,8 @@ button:hover {
   justify-content: space-between;
   gap: 5px;
   padding: 15px;
-  background: linear-gradient(to right, #8bdeda, #43add0,#998ee0 ); 
-  color: white;
+  background: linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6); 
+  color: black;
   border-radius: 8px;
   margin-bottom: 20px;
 }
@@ -145,8 +241,8 @@ table th, table td {
 }
 
 table th {
-  background:linear-gradient(to right, #8bdeda, #43add0,#998ee0);
-  color: white;
+  background:linear-gradient(to right, #a96f44, #f5cb86, #f2ecb6);
+  color: black;
 }
 
 .delete-btn, .edit-btn {
@@ -311,3 +407,4 @@ table th {
     font-size: 0.8rem;
   }
 }
+  
